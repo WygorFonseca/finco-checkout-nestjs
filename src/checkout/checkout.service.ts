@@ -33,9 +33,10 @@ export class CheckoutService {
 
   handleWebhookEvent(@Req() req: Request) {
     try {
+      if (!req.body) throw new BadRequestException('Request body is missing');
       // req.body aqui é Buffer (por causa do express.raw)
       const event = this.stripe.webhooks.constructEvent(
-        JSON.stringify(req.body),
+        req.body as unknown as Buffer,
         req.headers['stripe-signature'],
         process.env.STRIPE_WEBHOOK_SECRET!,
       );
