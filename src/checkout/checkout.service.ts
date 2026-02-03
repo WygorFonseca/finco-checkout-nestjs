@@ -18,9 +18,9 @@ export class CheckoutService {
   async createCheckoutSession() {
     const session = await this.stripe.checkout.sessions.create({
       mode: 'subscription',
-      line_items: [{ price: 'price_1Srjlg9aLFU4MluLFPIZSMzL', quantity: 1 }],
-      success_url: `https://finco.app.br/checkout/sucesso?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `https://finco.app.br/checkout/cancelado`,
+      line_items: [{ price: process.env.STRIPE_PRICE_ID!, quantity: 1 }],
+      success_url: `https://finco.app.br/cadastro`,
+      cancel_url: `https://finco.app.br/`,
       customer_email: undefined,
       allow_promotion_codes: true,
       subscription_data: {
