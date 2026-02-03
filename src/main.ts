@@ -5,6 +5,8 @@ import * as express from 'express';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bodyParser: false });
 
+  app.enableCors({ origin: '*' });
+
   // RAW apenas no webhook do Stripe (path exato!)
   app.use('/checkout/webhook', express.raw({ type: '*/*' }));
 
