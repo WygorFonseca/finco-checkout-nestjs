@@ -14,4 +14,13 @@ export class CheckoutController {
   handleWebhook(@Req() req: Request) {
     return this.checkoutService.handleWebhookEvent(req);
   }
+
+  @Post('send-email')
+  sendEmail() {
+    return this.checkoutService.sendEmail({
+      to: 'luisgustavomontagnini@outlook.com',
+      subject: 'Teste de email via AWS SES',
+      text: 'Este é um email de teste enviado via AWS SES usando NestJS!',
+    });
+  }
 }
