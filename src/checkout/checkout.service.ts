@@ -52,9 +52,6 @@ export class CheckoutService {
       cancel_url: `https://finco.app.br/`,
       customer_email: undefined,
       allow_promotion_codes: true,
-      subscription_data: {
-        trial_period_days: 7,
-      },
       branding_settings: {
         display_name: 'FINCO ECOM',
       },
